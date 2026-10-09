@@ -1,0 +1,24 @@
+name: Chronicle a repo
+description: Ask for a public repo's whole history to be read, so its Guildhall island can grow from the first commit.
+title: "Chronicle: "
+labels: ["chronicle"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A build reads the repo's history (counts, folder names, release tags, contributor names; **never code**) and publishes it here as a small file the hall loads. It usually takes a few minutes; this issue gets the island's link and closes when it's done.
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      description: owner/name, or its github.com link.
+      placeholder: facebook/react
+    validations:
+      required: true
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Public repo
+      options:
+        - label: This repo is public, and I'm happy for its aggregate history to be published here.
+          required: true

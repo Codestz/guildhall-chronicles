@@ -1,0 +1,120 @@
+# Builds a requested chronicle: an issue from the "Chronicle a repo" form (label `chronicle`) is read,
+# guarded, built with the vendored builder, published to main, and answered with the island's link.
+#
+# Guards (scripts/lib/request.ts): a valid owner/name and the public box ticked; a public repo on
+# GitHub; not built already (then the issue is answered with its link and closed); at most
+# CHRONICLE_MAX_SIZE_MB; maintainers' requests build at once, others wait for the `approved` label
+# when CHRONICLE_REQUIRE_APPROVAL is "true", and for the day's cap (CHRONICLE_DAILY_CAP builds a day).
+#
+# Security: the issue body never reaches an expression or a shell; scripts/request.ts fetches it by
+# number and only a repo name that passed strict validation (and that GitHub then spelled for us)
+# comes out. The job's token can write this repo's contents and issues, nothing else.
+name: Build a chronicle
+
+on:
+  issues:
+    types: [opened, reopened, labeled]
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: The request issue's number. A manual run is a maintainer's, so it skips the approval and daily-cap guards.
+        required: true
+        type: number
+
+permissions: {}
+
+# One run per issue at a time (a later event for the same issue waits). Different issues build in
+# parallel; scripts/publish.sh rebases each publish onto the latest main.
+concurrency:
+  group: chronicle-${{ github.event.issue.number || inputs.issue }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # Opened or reopened with the form's label, or a maintainer adding `approved`, or a manual run.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (contains(github.event.issue.labels.*.name, 'chronicle') &&
+       (github.event.action != 'labeled' || github.event.label.name == 'approved'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+      ISSUE: ${{ github.event.issue.number || inputs.issue }}
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 50
+      - uses: oven-sh/setup-bun@735343b667d3e6f658f44d0eca948eb6282f2b76 # v2.0.2
+        with:
+          bun-version: 1.3.13
+      - run: bun install --frozen-lockfile
+
+      - name: Read and check the request
+        id: request
+        env:
+          CHRONICLE_MAX_SIZE_MB: ${{ vars.CHRONICLE_MAX_SIZE_MB }}
+          CHRONICLE_DAILY_CAP: ${{ vars.CHRONICLE_DAILY_CAP }}
+          CHRONICLE_REQUIRE_APPROVAL: ${{ vars.CHRONICLE_REQUIRE_APPROVAL }}
+          MAINTAINER_RUN: ${{ github.event_name == 'workflow_dispatch' }}
+        run: bun scripts/request.ts
+
+      - name: Answer a request that won't build now
+        if: contains(fromJSON('["done","refuse","wait"]'), steps.request.outputs.verdict)
+        env:
+          VERDICT: ${{ steps.request.outputs.verdict }}
+        run: |
+          gh issue comment "$ISSUE" --body-file "$RUNNER_TEMP/reply.md"
+          case "$VERDICT" in
+            done) gh issue edit "$ISSUE" --add-label built && gh issue close "$ISSUE" --reason completed ;;
+            refuse) gh issue edit "$ISSUE" --add-label refused && gh issue close "$ISSUE" --reason "not planned" ;;
+            wait) gh issue edit "$ISSUE" --add-label queued ;;
+          esac
+
+      - name: Build the chronicle
+        if: steps.request.outputs.verdict == 'build'
+        env:
+          REPO: ${{ steps.request.outputs.repo }}
+          SLUG: ${{ steps.request.outputs.slug }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/out/chronicles" "$RUNNER_TEMP/out/og"
+          bun builder/chronicle.js deep "$REPO" --out "$RUNNER_TEMP/out/chronicles/$SLUG.json.gz"
+          bun scripts/og.ts "$RUNNER_TEMP/out/chronicles/$SLUG.json.gz" "$RUNNER_TEMP/out/og/$SLUG.png"
+
+      - name: Publish it
+        if: steps.request.outputs.verdict == 'build'
+        env:
+          REPO: ${{ steps.request.outputs.repo }}
+        run: >-
+          scripts/publish.sh "$RUNNER_TEMP/out" "chronicle: build $REPO (#$ISSUE)"
+
+      - name: Refresh the CDN
+        if: steps.request.outputs.verdict == 'build'
+        env:
+          SLUG: ${{ steps.request.outputs.slug }}
+        # jsDelivr keeps a branch's files up to 12 hours; a purge is a public, unauthenticated GET.
+        run: |
+          for path in "chronicles/$SLUG.json.gz" "og/$SLUG.png" index.json; do
+            curl -fsS --max-time 20 "https://purge.jsdelivr.net/gh/$GITHUB_REPOSITORY@main/$path" > /dev/null || echo "purge of $path failed (it expires on its own)"
+          done
+
+      - name: Answer the request
+        if: steps.request.outputs.verdict == 'build'
+        env:
+          REPO: ${{ steps.request.outputs.repo }}
+        run: |
+          bun scripts/reply.ts built "$REPO" > "$RUNNER_TEMP/reply.md"
+          gh issue comment "$ISSUE" --body-file "$RUNNER_TEMP/reply.md"
+          gh issue edit "$ISSUE" --add-label built --remove-label queued || gh issue edit "$ISSUE" --add-label built
+          gh issue close "$ISSUE" --reason completed
+
+      - name: Say it failed
+        if: failure()
+        run: |
+          bun scripts/reply.ts failed "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > "$RUNNER_TEMP/reply.md"
+          gh issue comment "$ISSUE" --body-file "$RUNNER_TEMP/reply.md"
+          gh issue edit "$ISSUE" --add-label failed
