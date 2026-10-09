@@ -47,7 +47,7 @@ Only **public** repos, and only **aggregate history**. A chronicle holds:
   GitHub logins (the same names `git log` shows anyone who clones the repo);
 - the repo's description, stars, forks, languages and creation date.
 
-It holds **no code, no file contents, no file paths below the top-level folders, and no email
+It holds **no code, no file contents, no file paths below the top-level folders and workspace packages, and no email
 addresses**. The builder clones without file contents (`--filter=blob:none`) and fails rather than
 download one. Everything in it is already public on GitHub; it is just counted.
 
