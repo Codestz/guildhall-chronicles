@@ -1,6 +1,6 @@
 {
  "v": 1,
- "updated": "2026-10-09",
+ "updated": "2026-10-10",
  "repos": [
   {
    "repo": "react/react",
@@ -35,6 +35,23 @@
    "files": 6630,
    "bytes": 124355822,
    "built": "2026-10-09"
+  },
+  {
+   "repo": "microsoft/vscode",
+   "description": "Visual Studio Code",
+   "stars": 193511,
+   "languages": [
+    "TypeScript",
+    "CSS",
+    "JavaScript"
+   ],
+   "years": [
+    2015,
+    2026
+   ],
+   "files": 20340,
+   "bytes": 296667239,
+   "built": "2026-10-10"
   },
   {
    "repo": "Codestz/claude-hindsight",
