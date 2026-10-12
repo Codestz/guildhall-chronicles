@@ -1,11 +1,11 @@
 {
  "v": 1,
- "updated": "2026-10-10",
+ "updated": "2026-10-12",
  "repos": [
   {
    "repo": "react/react",
    "description": "The library for web and native user interfaces.",
-   "stars": 250753,
+   "stars": 250901,
    "languages": [
     "JavaScript",
     "Rust",
@@ -15,14 +15,14 @@
     2013,
     2026
    ],
-   "files": 7252,
-   "bytes": 40629727,
-   "built": "2026-10-09"
+   "files": 7254,
+   "bytes": 40633738,
+   "built": "2026-10-12"
   },
   {
    "repo": "anomalyco/opencode",
    "description": "The open source coding agent.",
-   "stars": 212206,
+   "stars": 212844,
    "languages": [
     "TypeScript",
     "MDX",
@@ -32,14 +32,14 @@
     2025,
     2026
    ],
-   "files": 6630,
-   "bytes": 124355822,
-   "built": "2026-10-09"
+   "files": 8423,
+   "bytes": 135937712,
+   "built": "2026-10-12"
   },
   {
    "repo": "microsoft/vscode",
    "description": "Visual Studio Code",
-   "stars": 193511,
+   "stars": 193605,
    "languages": [
     "TypeScript",
     "CSS",
@@ -49,9 +49,9 @@
     2015,
     2026
    ],
-   "files": 20340,
-   "bytes": 296667239,
-   "built": "2026-10-10"
+   "files": 20356,
+   "bytes": 297017687,
+   "built": "2026-10-12"
   },
   {
    "repo": "Codestz/claude-hindsight",
@@ -68,7 +68,7 @@
    ],
    "files": 352,
    "bytes": 2446013,
-   "built": "2026-10-09"
+   "built": "2026-10-12"
   },
   {
    "repo": "Codestz/mcpx",
@@ -85,7 +85,7 @@
    ],
    "files": 147,
    "bytes": 753993,
-   "built": "2026-10-09"
+   "built": "2026-10-12"
   },
   {
    "repo": "Codestz/opencode-cockpit",
@@ -102,11 +102,11 @@
    ],
    "files": 784,
    "bytes": 9485417,
-   "built": "2026-10-09"
+   "built": "2026-10-12"
   },
   {
    "repo": "Codestz/guildhall",
-   "description": "Watch AI coding agents work as a living guild: a 3D live visualizer and agent harness for OpenCode.",
+   "description": "Events in. A living world out. Turn any event stream (coding agents, GitHub, a repo's history) into a living 3D island.",
    "stars": 0,
    "languages": [
     "TypeScript",
@@ -117,9 +117,9 @@
     2026,
     2026
    ],
-   "files": 495,
-   "bytes": 24513664,
-   "built": "2026-10-09"
+   "files": 889,
+   "bytes": 25484224,
+   "built": "2026-10-12"
   },
   {
    "repo": "Codestz/Mintroot",
@@ -133,7 +133,7 @@
    ],
    "files": 199,
    "bytes": 3318678,
-   "built": "2026-10-09"
+   "built": "2026-10-12"
   }
  ]
 }
