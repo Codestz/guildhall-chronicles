@@ -19,6 +19,23 @@ This repo is the backend, and it is only GitHub:
 The hall has no server and holds no token. It reads `index.json` and `chronicles/*.json.gz` from the
 CDN, falling back to the few chronicles it ships with, then to the live sketch.
 
+## Chronicled so far
+
+<!-- catalog:start -->
+| Repo | About | Stars | Years | Files | Size | Island |
+| --- | --- | ---: | --- | ---: | ---: | --- |
+| [react/react](https://github.com/react/react) | The library for web and native user interfaces. | 250,901 | 2013–2026 | 7,254 | 39 MB | [island](https://guildhall.codestz.dev/?repo=react/react&grow) |
+| [anomalyco/opencode](https://github.com/anomalyco/opencode) | The open source coding agent. | 212,844 | 2025–2026 | 8,423 | 130 MB | [island](https://guildhall.codestz.dev/?repo=anomalyco/opencode&grow) |
+| [microsoft/vscode](https://github.com/microsoft/vscode) | Visual Studio Code | 193,605 | 2015–2026 | 20,356 | 283 MB | [island](https://guildhall.codestz.dev/?repo=microsoft/vscode&grow) |
+| [Codestz/claude-hindsight](https://github.com/Codestz/claude-hindsight) | Claude Hindsight is a powerful observability tool for Claude Code that transforms raw JSONL transcripts into beautiful, interactive visualizations. Debug sessions, optimize costs, and understand Clau… | 21 | 2026 | 352 | 2 MB | [island](https://guildhall.codestz.dev/?repo=Codestz/claude-hindsight&grow) |
+| [Codestz/mcpx](https://github.com/Codestz/mcpx) | MCP servers as CLI tools — built for AI agents | 13 | 2026 | 147 | 736 KB | [island](https://guildhall.codestz.dev/?repo=Codestz/mcpx&grow) |
+| [Codestz/opencode-cockpit](https://github.com/Codestz/opencode-cockpit) | OpenCode superpowers: background shells the agent can start, wait on and drive, with a docked TUI panel | 4 | 2026 | 784 | 9 MB | [island](https://guildhall.codestz.dev/?repo=Codestz/opencode-cockpit&grow) |
+| [Codestz/guildhall](https://github.com/Codestz/guildhall) | Events in. A living world out. Turn any event stream (coding agents, GitHub, a repo's history) into a living 3D island. | 0 | 2026 | 889 | 24 MB | [island](https://guildhall.codestz.dev/?repo=Codestz/guildhall&grow) |
+| [Codestz/Mintroot](https://github.com/Codestz/Mintroot) |  | 0 | 2026 | 199 | 3 MB | [island](https://guildhall.codestz.dev/?repo=Codestz/Mintroot&grow) |
+<!-- catalog:end -->
+
+The table is written by `scripts/catalog.ts` from `index.json` in every publish commit; don't edit it by hand.
+
 ## Ask for a chronicle
 
 1. [Open a request](https://github.com/Codestz/guildhall-chronicles/issues/new?template=chronicle.yml)
@@ -64,10 +81,11 @@ removed without question.
 builder/chronicle.js                   the deep builder, vendored from Guildhall (see below)
 chronicles/<owner>__<name>.json.gz     the chronicles (lower case)
 og/<owner>__<name>.png                 their 1200×630 preview cards
-index.json                             the catalog: name, stars, languages, years, size, built date
+index.json                             the catalog: name, stars, languages, years, size, built date, and the builder
 site/                                  the Pages site: index.html, r/<owner>/<name>/index.html
 scripts/request.ts                     reads an issue and decides (pure rules in scripts/lib/request.ts)
 scripts/og.ts                          a chronicle's card (scripts/lib/card.ts), rendered with resvg
+scripts/catalog.ts                     index.json's `builder` stamp and the README's catalog table (scripts/lib/catalog.ts)
 scripts/site.ts                        site/ from index.json (scripts/lib/page.ts)
 scripts/publish.sh                     commit a build onto the latest main, retrying a lost race
 scripts/refresh.ts, scripts/reply.ts   the refresh list; the issue comments
@@ -83,6 +101,7 @@ bun install
 GITHUB_TOKEN=$(gh auth token) bun builder/chronicle.js deep facebook/react --out chronicles/react__react.json.gz
 bun scripts/og.ts chronicles/react__react.json.gz og/react__react.png
 bun builder/chronicle.js index chronicles --out index.json
+bun scripts/catalog.ts
 bun scripts/site.ts
 bun test
 ```
@@ -98,11 +117,16 @@ build never depends on another repo being reachable, and so every change to it i
 here. Its first lines name the Guildhall commit it came from. To update it, in a Guildhall checkout:
 
 ```sh
-bun scripts/chronicle-build.ts --out ../guildhall-chronicles/builder/chronicle.js
+bun legacy/scripts/chronicle-build.ts --out ../guildhall-chronicles/builder/chronicle.js
 ```
 
+(V1 lives under `legacy/` in Guildhall's `v2` branch, so the paths there are `legacy/scripts/chronicle.ts` and
+`legacy/packages/hall/src/world/chronicle/…`.) Build from a clean, committed tree: the banner then names
+a commit that reproduces the bundle, and `index.json`'s `builder` field (`commit`, `built`, plus `dirty`
+when it was built from uncommitted sources) records which builder wrote the catalog.
+
 then commit it here. Rebuild it whenever the chronicle format or the deep builder changes in
-Guildhall (`packages/hall/src/world/chronicle/{deep,format,catalog}.ts`, `scripts/chronicle.ts`).
+Guildhall (`world/chronicle/{deep,format,catalog}.ts`, `scripts/chronicle.ts`).
 
 ## Settings
 

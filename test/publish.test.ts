@@ -4,6 +4,7 @@ import { join } from "node:path"
 import { cardSvg, escapeXml, islandCells, wrap } from "../scripts/lib/card.ts"
 import { readChronicle } from "../scripts/lib/chronicle.ts"
 import { badgeMarkdown, islandLink, slugOf } from "../scripts/lib/config.ts"
+import { builderOf, CATALOG_END, CATALOG_START, catalogTable, spliceCatalog } from "../scripts/lib/catalog.ts"
 import { type Catalog, type Entry, pagePath, previewPage } from "../scripts/lib/page.ts"
 
 const ROOT = join(import.meta.dir, "..")
@@ -77,5 +78,61 @@ describe("the preview page", () => {
 
   test("the badge links the island", () => {
     expect(badgeMarkdown("a/b")).toEndWith("(https://guildhall.codestz.dev/?repo=a/b&grow)")
+  })
+})
+
+describe("the catalog table and the builder stamp", () => {
+  const entry = (over: Partial<Entry>): Entry => ({
+    repo: "a/b",
+    languages: [],
+    years: [2020, 2024],
+    files: 1234,
+    bytes: 5 * 1024 ** 2,
+    built: "2026-01-01",
+    ...over,
+  })
+
+  test("a row per repo with its link, facts and island link; pipes and markup in text are escaped", () => {
+    const table = catalogTable([entry({ description: "x | y\n<b>z</b>", stars: 1500 })])
+    const row = table.split("\n")[2] as string
+    expect(row).toContain("[a/b](https://github.com/a/b)")
+    expect(row).toContain("x \\| y \\<b\\>z\\</b\\>")
+    expect(row).toContain("1,500 | 2020–2024 | 1,234 | 5 MB")
+    expect(row).toContain(`[island](${islandLink("a/b")})`)
+    expect(table.split("\n")).toHaveLength(3)
+  })
+
+  test("the README is spliced between its markers and the splice is stable", () => {
+    const readme = `top\n${CATALOG_START}\nold\n${CATALOG_END}\nbottom\n`
+    const once = spliceCatalog(readme, "T")
+    expect(once).toBe(`top\n${CATALOG_START}\nT\n${CATALOG_END}\nbottom\n`)
+    expect(spliceCatalog(once, "T")).toBe(once)
+    expect(() => spliceCatalog("none", "T")).toThrow()
+  })
+
+  test("the README's table is the one index.json makes", () => {
+    const index = JSON.parse(readFileSync(join(ROOT, "index.json"), "utf8")) as Catalog
+    const readme = readFileSync(join(ROOT, "README.md"), "utf8")
+    expect(spliceCatalog(readme, catalogTable(index.repos))).toBe(readme)
+  })
+
+  test("the builder is read from the bundle's banner, V1's and legacy/ paths alike", () => {
+    const sha = "6e0f1d411db661fd73f2545ba1d5d8143e4dce6d"
+    const banner = (path: string, dirty = "") =>
+      `// @bun\n// x\n// Source: https://github.com/Codestz/guildhall/blob/${sha}/${path}${dirty}\n// Built: 2026-10-13T14:11:53.167Z\n`
+    expect(builderOf(banner("legacy/scripts/chronicle.ts"))).toEqual({ commit: sha, built: "2026-10-13T14:11:53.167Z" })
+    expect(builderOf(banner("scripts/chronicle.ts", " (plus uncommitted changes)"))).toEqual({
+      commit: sha,
+      built: "2026-10-13T14:11:53.167Z",
+      dirty: true,
+    })
+    expect(builderOf("no banner")).toBeUndefined()
+  })
+
+  test("the vendored bundle has a banner, and index.json, when stamped, names it", () => {
+    const builder = builderOf(readFileSync(join(ROOT, "builder/chronicle.js"), "utf8"))
+    if (!builder) throw new Error("builder/chronicle.js has no banner")
+    const index = JSON.parse(readFileSync(join(ROOT, "index.json"), "utf8")) as Catalog
+    if (index.builder) expect(index.builder).toEqual(builder)
   })
 })
