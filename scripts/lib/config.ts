@@ -16,7 +16,11 @@ export function slugOf(repo: string): string {
   return repo.toLowerCase().replace("/", "__")
 }
 
-/** The island in the hall, growing through its history. */
+/**
+ * The island in the hall, growing through its history. The one place a link to an island is made
+ * (badge, preview pages, README catalog): V1 takes `?repo=`; switch it here when V2's
+ * `/hall/<owner>/<repo>` is live.
+ */
 export function islandLink(repo: string): string {
   return `${HALL}/?repo=${repo}&grow`
 }

@@ -1,4 +1,5 @@
 import { escapeXml as escape } from "./card.ts"
+import type { BuilderInfo } from "./catalog.ts"
 import { HALL, islandLink, PAGES, previewLink, slugOf } from "./config.ts"
 
 /**
@@ -25,6 +26,8 @@ export interface Catalog {
   v: 1
   updated: string
   repos: Entry[]
+  /** Which builder wrote it (scripts/catalog.ts); absent in older catalogs. */
+  builder?: BuilderInfo
 }
 
 /** The page's path under site/, lower case (Pages paths are case-sensitive; links are made here). */
