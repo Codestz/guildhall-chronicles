@@ -1,11 +1,11 @@
 {
  "v": 1,
- "updated": "2026-10-12",
+ "updated": "2026-10-19",
  "repos": [
   {
    "repo": "react/react",
    "description": "The library for web and native user interfaces.",
-   "stars": 250901,
+   "stars": 251383,
    "languages": [
     "JavaScript",
     "Rust",
@@ -15,14 +15,14 @@
     2013,
     2026
    ],
-   "files": 7254,
-   "bytes": 40633738,
-   "built": "2026-10-12"
+   "files": 7260,
+   "bytes": 40614610,
+   "built": "2026-10-19"
   },
   {
    "repo": "anomalyco/opencode",
    "description": "The open source coding agent.",
-   "stars": 212844,
+   "stars": 217079,
    "languages": [
     "TypeScript",
     "MDX",
@@ -32,26 +32,26 @@
     2025,
     2026
    ],
-   "files": 8423,
-   "bytes": 135937712,
-   "built": "2026-10-12"
+   "files": 8562,
+   "bytes": 137840124,
+   "built": "2026-10-19"
   },
   {
    "repo": "microsoft/vscode",
    "description": "Visual Studio Code",
-   "stars": 193605,
+   "stars": 193944,
    "languages": [
     "TypeScript",
     "CSS",
-    "JavaScript"
+    "Rust"
    ],
    "years": [
     2015,
     2026
    ],
-   "files": 20356,
-   "bytes": 297017687,
-   "built": "2026-10-12"
+   "files": 20808,
+   "bytes": 310255122,
+   "built": "2026-10-19"
   },
   {
    "repo": "Codestz/claude-hindsight",
@@ -68,7 +68,7 @@
    ],
    "files": 352,
    "bytes": 2446013,
-   "built": "2026-10-12"
+   "built": "2026-10-19"
   },
   {
    "repo": "Codestz/mcpx",
@@ -85,12 +85,12 @@
    ],
    "files": 147,
    "bytes": 753993,
-   "built": "2026-10-12"
+   "built": "2026-10-19"
   },
   {
    "repo": "Codestz/opencode-cockpit",
    "description": "OpenCode superpowers: background shells the agent can start, wait on and drive, with a docked TUI panel",
-   "stars": 4,
+   "stars": 7,
    "languages": [
     "TypeScript",
     "MDX",
@@ -100,9 +100,9 @@
     2026,
     2026
    ],
-   "files": 784,
-   "bytes": 9485417,
-   "built": "2026-10-12"
+   "files": 791,
+   "bytes": 9634202,
+   "built": "2026-10-19"
   },
   {
    "repo": "Codestz/guildhall",
@@ -110,16 +110,15 @@
    "stars": 0,
    "languages": [
     "TypeScript",
-    "CSS",
     "HTML"
    ],
    "years": [
     2026,
     2026
    ],
-   "files": 889,
-   "bytes": 25484224,
-   "built": "2026-10-12"
+   "files": 1185,
+   "bytes": 13610600,
+   "built": "2026-10-19"
   },
   {
    "repo": "Codestz/Mintroot",

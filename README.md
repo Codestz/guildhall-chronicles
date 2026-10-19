@@ -24,13 +24,13 @@ CDN, falling back to the few chronicles it ships with, then to the live sketch.
 <!-- catalog:start -->
 | Repo | About | Stars | Years | Files | Size | Island |
 | --- | --- | ---: | --- | ---: | ---: | --- |
-| [react/react](https://github.com/react/react) | The library for web and native user interfaces. | 250,901 | 2013–2026 | 7,254 | 39 MB | [island](https://guildhall.codestz.dev/?repo=react/react&grow) |
-| [anomalyco/opencode](https://github.com/anomalyco/opencode) | The open source coding agent. | 212,844 | 2025–2026 | 8,423 | 130 MB | [island](https://guildhall.codestz.dev/?repo=anomalyco/opencode&grow) |
-| [microsoft/vscode](https://github.com/microsoft/vscode) | Visual Studio Code | 193,605 | 2015–2026 | 20,356 | 283 MB | [island](https://guildhall.codestz.dev/?repo=microsoft/vscode&grow) |
+| [react/react](https://github.com/react/react) | The library for web and native user interfaces. | 251,383 | 2013–2026 | 7,260 | 39 MB | [island](https://guildhall.codestz.dev/?repo=react/react&grow) |
+| [anomalyco/opencode](https://github.com/anomalyco/opencode) | The open source coding agent. | 217,079 | 2025–2026 | 8,562 | 131 MB | [island](https://guildhall.codestz.dev/?repo=anomalyco/opencode&grow) |
+| [microsoft/vscode](https://github.com/microsoft/vscode) | Visual Studio Code | 193,944 | 2015–2026 | 20,808 | 296 MB | [island](https://guildhall.codestz.dev/?repo=microsoft/vscode&grow) |
 | [Codestz/claude-hindsight](https://github.com/Codestz/claude-hindsight) | Claude Hindsight is a powerful observability tool for Claude Code that transforms raw JSONL transcripts into beautiful, interactive visualizations. Debug sessions, optimize costs, and understand Clau… | 21 | 2026 | 352 | 2 MB | [island](https://guildhall.codestz.dev/?repo=Codestz/claude-hindsight&grow) |
 | [Codestz/mcpx](https://github.com/Codestz/mcpx) | MCP servers as CLI tools — built for AI agents | 13 | 2026 | 147 | 736 KB | [island](https://guildhall.codestz.dev/?repo=Codestz/mcpx&grow) |
-| [Codestz/opencode-cockpit](https://github.com/Codestz/opencode-cockpit) | OpenCode superpowers: background shells the agent can start, wait on and drive, with a docked TUI panel | 4 | 2026 | 784 | 9 MB | [island](https://guildhall.codestz.dev/?repo=Codestz/opencode-cockpit&grow) |
-| [Codestz/guildhall](https://github.com/Codestz/guildhall) | Events in. A living world out. Turn any event stream (coding agents, GitHub, a repo's history) into a living 3D island. | 0 | 2026 | 889 | 24 MB | [island](https://guildhall.codestz.dev/?repo=Codestz/guildhall&grow) |
+| [Codestz/opencode-cockpit](https://github.com/Codestz/opencode-cockpit) | OpenCode superpowers: background shells the agent can start, wait on and drive, with a docked TUI panel | 7 | 2026 | 791 | 9 MB | [island](https://guildhall.codestz.dev/?repo=Codestz/opencode-cockpit&grow) |
+| [Codestz/guildhall](https://github.com/Codestz/guildhall) | Events in. A living world out. Turn any event stream (coding agents, GitHub, a repo's history) into a living 3D island. | 0 | 2026 | 1,185 | 13 MB | [island](https://guildhall.codestz.dev/?repo=Codestz/guildhall&grow) |
 | [Codestz/Mintroot](https://github.com/Codestz/Mintroot) |  | 0 | 2026 | 199 | 3 MB | [island](https://guildhall.codestz.dev/?repo=Codestz/Mintroot&grow) |
 <!-- catalog:end -->
 
