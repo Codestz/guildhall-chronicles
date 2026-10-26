@@ -1,11 +1,11 @@
 {
  "v": 1,
- "updated": "2026-10-19",
+ "updated": "2026-10-26",
  "repos": [
   {
    "repo": "react/react",
    "description": "The library for web and native user interfaces.",
-   "stars": 251383,
+   "stars": 251861,
    "languages": [
     "JavaScript",
     "Rust",
@@ -15,14 +15,14 @@
     2013,
     2026
    ],
-   "files": 7260,
-   "bytes": 40614610,
-   "built": "2026-10-19"
+   "files": 7268,
+   "bytes": 40668590,
+   "built": "2026-10-26"
   },
   {
    "repo": "anomalyco/opencode",
    "description": "The open source coding agent.",
-   "stars": 217079,
+   "stars": 221716,
    "languages": [
     "TypeScript",
     "MDX",
@@ -32,14 +32,14 @@
     2025,
     2026
    ],
-   "files": 8562,
-   "bytes": 137840124,
-   "built": "2026-10-19"
+   "files": 8919,
+   "bytes": 140684931,
+   "built": "2026-10-26"
   },
   {
    "repo": "microsoft/vscode",
    "description": "Visual Studio Code",
-   "stars": 193944,
+   "stars": 194318,
    "languages": [
     "TypeScript",
     "CSS",
@@ -49,9 +49,9 @@
     2015,
     2026
    ],
-   "files": 20808,
-   "bytes": 310255122,
-   "built": "2026-10-19"
+   "files": 21265,
+   "bytes": 321978905,
+   "built": "2026-10-26"
   },
   {
    "repo": "Codestz/claude-hindsight",
@@ -68,7 +68,7 @@
    ],
    "files": 352,
    "bytes": 2446013,
-   "built": "2026-10-19"
+   "built": "2026-10-26"
   },
   {
    "repo": "Codestz/mcpx",
@@ -85,12 +85,12 @@
    ],
    "files": 147,
    "bytes": 753993,
-   "built": "2026-10-19"
+   "built": "2026-10-26"
   },
   {
    "repo": "Codestz/opencode-cockpit",
    "description": "OpenCode superpowers: background shells the agent can start, wait on and drive, with a docked TUI panel",
-   "stars": 7,
+   "stars": 8,
    "languages": [
     "TypeScript",
     "MDX",
@@ -102,7 +102,7 @@
    ],
    "files": 791,
    "bytes": 9634202,
-   "built": "2026-10-19"
+   "built": "2026-10-26"
   },
   {
    "repo": "Codestz/guildhall",
@@ -118,7 +118,7 @@
    ],
    "files": 1185,
    "bytes": 13610600,
-   "built": "2026-10-19"
+   "built": "2026-10-26"
   },
   {
    "repo": "Codestz/Mintroot",
