@@ -1,11 +1,11 @@
 {
  "v": 1,
- "updated": "2026-11-02",
+ "updated": "2026-11-09",
  "repos": [
   {
    "repo": "react/react",
    "description": "The library for web and native user interfaces.",
-   "stars": 252085,
+   "stars": 252435,
    "languages": [
     "JavaScript",
     "Rust",
@@ -16,13 +16,13 @@
     2026
    ],
    "files": 7300,
-   "bytes": 40767749,
-   "built": "2026-11-02"
+   "bytes": 40781396,
+   "built": "2026-11-09"
   },
   {
    "repo": "anomalyco/opencode",
    "description": "The open source coding agent.",
-   "stars": 223987,
+   "stars": 225663,
    "languages": [
     "TypeScript",
     "MDX",
@@ -32,14 +32,14 @@
     2025,
     2026
    ],
-   "files": 9275,
-   "bytes": 148358110,
-   "built": "2026-11-02"
+   "files": 11291,
+   "bytes": 154398573,
+   "built": "2026-11-09"
   },
   {
    "repo": "microsoft/vscode",
    "description": "Visual Studio Code",
-   "stars": 194478,
+   "stars": 195224,
    "languages": [
     "TypeScript",
     "CSS",
@@ -49,9 +49,9 @@
     2015,
     2026
    ],
-   "files": 20710,
-   "bytes": 324384565,
-   "built": "2026-11-02"
+   "files": 21007,
+   "bytes": 351933293,
+   "built": "2026-11-09"
   },
   {
    "repo": "Codestz/claude-hindsight",
@@ -68,7 +68,7 @@
    ],
    "files": 352,
    "bytes": 2446013,
-   "built": "2026-11-02"
+   "built": "2026-11-09"
   },
   {
    "repo": "Codestz/mcpx",
@@ -85,12 +85,12 @@
    ],
    "files": 147,
    "bytes": 753993,
-   "built": "2026-11-02"
+   "built": "2026-11-09"
   },
   {
    "repo": "Codestz/opencode-cockpit",
    "description": "OpenCode superpowers: background shells the agent can start, wait on and drive, with a docked TUI panel",
-   "stars": 8,
+   "stars": 9,
    "languages": [
     "TypeScript",
     "MDX",
@@ -102,7 +102,7 @@
    ],
    "files": 791,
    "bytes": 9635674,
-   "built": "2026-11-02"
+   "built": "2026-11-09"
   },
   {
    "repo": "Codestz/guildhall",
@@ -118,7 +118,7 @@
    ],
    "files": 1185,
    "bytes": 13610600,
-   "built": "2026-11-02"
+   "built": "2026-11-09"
   },
   {
    "repo": "Codestz/Mintroot",
