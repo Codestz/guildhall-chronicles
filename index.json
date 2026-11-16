@@ -1,11 +1,11 @@
 {
  "v": 1,
- "updated": "2026-11-09",
+ "updated": "2026-11-16",
  "repos": [
   {
    "repo": "react/react",
    "description": "The library for web and native user interfaces.",
-   "stars": 252435,
+   "stars": 252668,
    "languages": [
     "JavaScript",
     "Rust",
@@ -15,14 +15,14 @@
     2013,
     2026
    ],
-   "files": 7300,
-   "bytes": 40781396,
-   "built": "2026-11-09"
+   "files": 7275,
+   "bytes": 40542687,
+   "built": "2026-11-16"
   },
   {
    "repo": "anomalyco/opencode",
    "description": "The open source coding agent.",
-   "stars": 225663,
+   "stars": 227199,
    "languages": [
     "TypeScript",
     "MDX",
@@ -32,14 +32,14 @@
     2025,
     2026
    ],
-   "files": 11291,
-   "bytes": 154398573,
-   "built": "2026-11-09"
+   "files": 11487,
+   "bytes": 160450949,
+   "built": "2026-11-16"
   },
   {
    "repo": "microsoft/vscode",
    "description": "Visual Studio Code",
-   "stars": 195224,
+   "stars": 195469,
    "languages": [
     "TypeScript",
     "CSS",
@@ -49,14 +49,14 @@
     2015,
     2026
    ],
-   "files": 21007,
-   "bytes": 351933293,
-   "built": "2026-11-09"
+   "files": 21466,
+   "bytes": 360664262,
+   "built": "2026-11-16"
   },
   {
    "repo": "Codestz/claude-hindsight",
    "description": "Claude Hindsight is a powerful observability tool for Claude Code that transforms raw JSONL transcripts into beautiful, interactive visualizations. Debug sessions, optimize costs, and understand Clau…",
-   "stars": 22,
+   "stars": 23,
    "languages": [
     "Rust",
     "TypeScript",
@@ -68,7 +68,7 @@
    ],
    "files": 352,
    "bytes": 2446013,
-   "built": "2026-11-09"
+   "built": "2026-11-16"
   },
   {
    "repo": "Codestz/mcpx",
@@ -85,7 +85,7 @@
    ],
    "files": 147,
    "bytes": 753993,
-   "built": "2026-11-09"
+   "built": "2026-11-16"
   },
   {
    "repo": "Codestz/opencode-cockpit",
@@ -102,7 +102,7 @@
    ],
    "files": 791,
    "bytes": 9635674,
-   "built": "2026-11-09"
+   "built": "2026-11-16"
   },
   {
    "repo": "Codestz/guildhall",
@@ -118,7 +118,7 @@
    ],
    "files": 1185,
    "bytes": 13610600,
-   "built": "2026-11-09"
+   "built": "2026-11-16"
   },
   {
    "repo": "Codestz/Mintroot",
