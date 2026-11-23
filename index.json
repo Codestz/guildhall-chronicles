@@ -1,11 +1,11 @@
 {
  "v": 1,
- "updated": "2026-11-16",
+ "updated": "2026-11-23",
  "repos": [
   {
    "repo": "react/react",
    "description": "The library for web and native user interfaces.",
-   "stars": 252668,
+   "stars": 252935,
    "languages": [
     "JavaScript",
     "Rust",
@@ -15,31 +15,31 @@
     2013,
     2026
    ],
-   "files": 7275,
-   "bytes": 40542687,
-   "built": "2026-11-16"
+   "files": 7283,
+   "bytes": 40610372,
+   "built": "2026-11-23"
   },
   {
    "repo": "anomalyco/opencode",
    "description": "The open source coding agent.",
-   "stars": 227199,
+   "stars": 228756,
    "languages": [
     "TypeScript",
-    "MDX",
-    "CSS"
+    "Rust",
+    "MDX"
    ],
    "years": [
     2025,
     2026
    ],
-   "files": 11487,
-   "bytes": 160450949,
-   "built": "2026-11-16"
+   "files": 14029,
+   "bytes": 186664990,
+   "built": "2026-11-23"
   },
   {
    "repo": "microsoft/vscode",
    "description": "Visual Studio Code",
-   "stars": 195469,
+   "stars": 195787,
    "languages": [
     "TypeScript",
     "CSS",
@@ -49,9 +49,9 @@
     2015,
     2026
    ],
-   "files": 21466,
-   "bytes": 360664262,
-   "built": "2026-11-16"
+   "files": 21625,
+   "bytes": 366929039,
+   "built": "2026-11-23"
   },
   {
    "repo": "Codestz/claude-hindsight",
@@ -68,7 +68,7 @@
    ],
    "files": 352,
    "bytes": 2446013,
-   "built": "2026-11-16"
+   "built": "2026-11-23"
   },
   {
    "repo": "Codestz/mcpx",
@@ -85,7 +85,7 @@
    ],
    "files": 147,
    "bytes": 753993,
-   "built": "2026-11-16"
+   "built": "2026-11-23"
   },
   {
    "repo": "Codestz/opencode-cockpit",
@@ -102,7 +102,7 @@
    ],
    "files": 791,
    "bytes": 9635674,
-   "built": "2026-11-16"
+   "built": "2026-11-23"
   },
   {
    "repo": "Codestz/guildhall",
@@ -118,7 +118,7 @@
    ],
    "files": 1185,
    "bytes": 13610600,
-   "built": "2026-11-16"
+   "built": "2026-11-23"
   },
   {
    "repo": "Codestz/Mintroot",
